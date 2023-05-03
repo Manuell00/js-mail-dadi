@@ -68,12 +68,12 @@ button.addEventListener("click",
 
                 )
 
-                if (userValue > pcValue) {
-                    document.getElementById("victoryUser").style.display = "flex";
+                if ((document.getElementById('shotPC').clicked == true) && (document.getElementById('shotUser').clicked == true) && (userValue > pcValue)) {
+                    document.getElementById("victoryUser").style.display = "block";
                 }
 
-                else {
-                    document.getElementById("victoryPC").style.display = "flex";
+                else if ((document.getElementById('shotPC').clicked == true) && (document.getElementById('shotUser').clicked == true) && (userValue < pcValue)){
+                    document.getElementById("victoryPC").style.display = "block";
                 }
 
                 break

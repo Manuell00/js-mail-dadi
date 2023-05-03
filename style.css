@@ -18,6 +18,14 @@
 #shotDice{
     display:none;
 }
+#shotPC{
+    color: red;
+    font-weight: 700;
+}
+#shotUser{
+    color: green;
+    font-weight: 700;
+}
 
 #victoryUser{
     display: none;
