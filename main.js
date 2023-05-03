@@ -31,6 +31,10 @@ const buttonUser = document.getElementById("buttonVerifyUser")
 // Definisco la variable buttonPC
 const buttonPC = document.getElementById("buttonVerifyPC")
 
+// Definisco le variabili clicked che andranno messe true quando cliccherò sui rispettivi bottoni
+var clicked1 = false
+var clicked2 = false
+
 
 
 
@@ -53,6 +57,8 @@ button.addEventListener("click",
                         const userValue = Math.floor(Math.random() * 7)
 
                         document.getElementById("shotUser").innerHTML = userValue
+
+                        clicked1 = true
                     }
 
                 )
@@ -64,16 +70,18 @@ button.addEventListener("click",
                         const pcValue = Math.floor(Math.random() * 7)
 
                         document.getElementById("shotPC").innerHTML = pcValue
+
+                        clicked2 = true
                     }
 
                 )
 
-                if ((document.getElementById('shotPC').clicked == true) && (document.getElementById('shotUser').clicked == true) && (userValue > pcValue)) {
+                if ((clicked1 == true) && (clicked2 == true) && (userValue > pcValue)) {
                     document.getElementById("final-row").style.display = "block";
                     document.getElementById("victoryUser").style.display = "block";
                 }
 
-                else if ((document.getElementById('shotPC').clicked == true) && (document.getElementById('shotUser').clicked == true) && (userValue < pcValue)){
+                else if ((clicked1 == true) && (clicked2 == true) && (userValue < pcValue)){
                     document.getElementById("final-row").style.display = "block";
                     document.getElementById("victoryPC").style.display = "block";
                 }
