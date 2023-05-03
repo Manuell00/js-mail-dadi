@@ -27,6 +27,10 @@
     font-weight: 700;
 }
 
+#final-row{
+    display: none;
+}
+
 #victoryUser{
     display: none;
 }
