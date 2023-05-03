@@ -1,0 +1,28 @@
+/* Regole Generali */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container{
+    
+    background-color: dodgerblue;
+}
+
+#main-row{
+    height: 100vh;
+}
+
+/* Definisco la parte vera solo se si è interni alla lista */
+#shotDice{
+    display:none;
+}
+
+#victoryUser{
+    display: none;
+}
+
+#victoryPC{
+    display: none;
+}
