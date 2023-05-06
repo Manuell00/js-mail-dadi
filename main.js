@@ -50,6 +50,10 @@ button.addEventListener("click",
             if (inputMail === mail[i]) {
                 alert("Il tuo invito è confermato, benvenuto!")
                 document.getElementById("shotDice").style.display = "flex";
+                
+                document.getElementById("startForm").style.display = "none";
+
+
 
                 buttonVerifyUser.addEventListener("click",
                     function () {
@@ -59,13 +63,6 @@ button.addEventListener("click",
                         document.getElementById("shotUser").innerHTML = userValue
 
                         clicked1 = true
-
-                        //se ho già cliccato su bottone pc
-                        if (clicked2 == true) {
-                            //richiamo getresult getResult()
-                            getResult()
-                            console.log(getResult())
-                        }
 
                     }
 
@@ -78,6 +75,8 @@ button.addEventListener("click",
                         const pcValue = Math.floor(Math.random() * 7)
 
                         document.getElementById("shotPC").innerHTML = pcValue
+
+                        clicked2 = true
                     }
 
                 )
@@ -89,7 +88,12 @@ button.addEventListener("click",
 
                         const PC = document.getElementById("shotPC").textContent
 
-                        console.log(User,PC)
+                        console.log(User, PC)
+
+                        document.getElementById("victoryUser").style.display = "none"
+
+                        document.getElementById("victoryPC").style.display = "none"
+
 
                         if (User > PC) {
                             document.getElementById("final-row").style.display = "block";
@@ -101,18 +105,27 @@ button.addEventListener("click",
                             document.getElementById("victoryPC").style.display = "block";
                         }
 
-
-                        else {
-                            alert("Il tuo invito NON è presente, ci dispiace non puoi giocare!")
+                        else if ((clicked1==false) || (clicked2 == false)) {
+                            document.getElementById("final-row").style.display = "block";
+                            document.getElementById("notShot").style.display = "block";
                         }
+
+                        else{
+                            document.getElementById("final-row").style.display = "block";
+                            document.getElementById("equal").style.display = "block";
+                        }
+
                     }
                 )
-
+                break
             }
-            break
+
+            else {
+                    alert("Il tuo invito NON è presente, ci dispiace non puoi giocare!")
+                    break
+                }
 
         }
-
     }
 )
 
