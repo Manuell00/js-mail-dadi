@@ -32,8 +32,8 @@ const buttonUser = document.getElementById("buttonVerifyUser")
 const buttonPC = document.getElementById("buttonVerifyPC")
 
 // Definisco le variabili clicked che andranno messe true quando cliccherò sui rispettivi bottoni
-var clicked1 = false
-var clicked2 = false
+let clicked1 = false
+let clicked2 = false
 
 
 
@@ -51,7 +51,7 @@ button.addEventListener("click",
                 alert("Il tuo invito è confermato, benvenuto!")
                 document.getElementById("shotDice").style.display = "flex";
 
-                buttonUser.addEventListener("click",
+                buttonVerifyUser.addEventListener("click",
                     function () {
                         // Creo un valore random da 1-6 per l'User
                         const userValue = Math.floor(Math.random() * 7)
@@ -59,40 +59,58 @@ button.addEventListener("click",
                         document.getElementById("shotUser").innerHTML = userValue
 
                         clicked1 = true
+
+                        //se ho già cliccato su bottone pc
+                        if (clicked2 == true) {
+                            //richiamo getresult getResult()
+                            getResult()
+                            console.log(getResult())
+                        }
+
                     }
 
                 )
 
-                buttonPC.addEventListener("click",
+                buttonVerifyPC.addEventListener("click",
                     function () {
 
                         // Creo un valore random da 1-6 per il PC
                         const pcValue = Math.floor(Math.random() * 7)
 
                         document.getElementById("shotPC").innerHTML = pcValue
-
-                        clicked2 = true
                     }
 
                 )
 
-                if ((clicked1 == true) && (clicked2 == true) && (userValue > pcValue)) {
-                    document.getElementById("final-row").style.display = "block";
-                    document.getElementById("victoryUser").style.display = "block";
-                }
+                buttonVerifyResult.addEventListener("click",
+                    function () {
 
-                else if ((clicked1 == true) && (clicked2 == true) && (userValue < pcValue)){
-                    document.getElementById("final-row").style.display = "block";
-                    document.getElementById("victoryPC").style.display = "block";
-                }
+                        const User = document.getElementById("shotUser").textContent
 
-                break
+                        const PC = document.getElementById("shotPC").textContent
+
+                        console.log(User,PC)
+
+                        if (User > PC) {
+                            document.getElementById("final-row").style.display = "block";
+                            document.getElementById("victoryUser").style.display = "block";
+                        }
+
+                        else if (User < PC) {
+                            document.getElementById("final-row").style.display = "block";
+                            document.getElementById("victoryPC").style.display = "block";
+                        }
+
+
+                        else {
+                            alert("Il tuo invito NON è presente, ci dispiace non puoi giocare!")
+                        }
+                    }
+                )
+
             }
+            break
 
-            else {
-                alert("Il tuo invito NON è presente, ci dispiace non puoi giocare!")
-                break
-            }
         }
 
     }
@@ -105,6 +123,3 @@ button.addEventListener("click",
 
 
 
-// GIOCO DADI
-// Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
-// Stabilire il vincitore, in base a chi fa il punteggio più alto.
